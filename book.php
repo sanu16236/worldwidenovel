@@ -4,9 +4,10 @@ define('PAGE','Book');
 include('dbconnection.inc.php');
 include('header.php');
 
-
 if(!isset($_SESSION['ulogin'])){
-header('location:warning.php');
+echo "<script>";
+echo "window.location.href='warning.html'";
+echo"</script>";
 } ?>
 <!--ad section start-->
 <script type='text/javascript' src='//pl15884251.topprofitablegate.com/05/9a/28/059a2845970c246aa4d2cc671303737b.js'></script>
