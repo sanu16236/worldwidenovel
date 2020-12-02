@@ -57,39 +57,21 @@ $.ajax({
 
       if(data == 1){
 
-          $('#mailmsg').html('<p class="text-danger">Email already exist..</p>');
+          $('#mailmsg').html('<p class="text-light">Email already exist..</p>');
 
       }else{
-
-    if(data == "ok"){
-
-        $('#signupbtn').html('loading..');
-
-        setInterval(function(){
-
-          $('#signupbtn').html('Sign UP');
-
-          $('#signuper').html('<p class="alert alert-success">Redirecting to home page...</p>');
-
-          setInterval(function(){
-
-            window.location.href='index.php';
-
-          },2000)
-
-        },1000)
-
-
-
+    
+        if (data == "sent") {
+      
+      $('#signuper').html('<p class="alert alert-success">Redirection to home page ...</p>');
+          setTimeout(function () { 
+            window.location.href = "index.php";
+          }, 2000);
     }
 
-      }
-
-  }
-
+ }
+}
 });
-
-
 
 });
 
@@ -100,8 +82,6 @@ $.ajax({
 $('#signinbtn').on("click", function(e){
 
   e.preventDefault();
-
-  console.log('btn clicked');
 
   var lemail = $('#lemail').val();
 

@@ -1,0 +1,4 @@
+[22-Oct-2020 03:03:34 UTC] PHP Notice:  Undefined index: bid in /home/wdzs81bu6es3/public_html/PaytmKit/TxnTest.php on line 34
+[22-Oct-2020 03:03:34 UTC] PHP Notice:  Undefined index: book_name in /home/wdzs81bu6es3/public_html/PaytmKit/TxnTest.php on line 40
+[22-Oct-2020 03:03:34 UTC] PHP Notice:  Undefined index: uemail in /home/wdzs81bu6es3/public_html/PaytmKit/TxnTest.php on line 52
+[22-Oct-2020 03:03:34 UTC] PHP Notice:  Undefined index: price in /home/wdzs81bu6es3/public_html/PaytmKit/TxnTest.php on line 66
