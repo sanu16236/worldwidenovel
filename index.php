@@ -34,56 +34,53 @@ if(isset($_POST['send'])){
 
     }
 }
-// Newsletter section start...
-if(isset($_POST['newsletter_btn'])){
-	$email=$_POST['nemail'];
-	$sql= "insert into newsletter(nemail) values('$email')";
-	$row = mysqli_query($con,$sql);
-	if($row){
+// // Newsletter section start...
+// if(isset($_POST['newsletter_btn'])){
+// 	$email=$_POST['nemail'];
+// 	$sql= "insert into newsletter(nemail) values('$email')";
+// 	$row = mysqli_query($con,$sql);
+// 	if($row){
 		
-require('phpmailer/PHPMailerAutoload.php');
-    $mail = new PHPMailer;
-    //Server settings
-    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'thedk3210@gmail.com';                     // SMTP username
-    $mail->Password   = '7209608270a';                               // SMTP password
-    $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-    $mail->setFrom('official@worldwidenovel.com');
-    $mail->addAddress($_POST['nemail']);    // Add a recipient
-    $mail->addReplyTo('official@worldwidenovel.com');
-    $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Welcome to World Wide Novel';
-    $mail->Body    = '<p>Hii, <br> We are world wide novel. <br> Thanks for Subscribe Our Newsletter..</p>';
-
-  if(!$mail->send()){
+//     require('phpmailer/PHPMailerAutoload.php');
+//     $mail = new PHPMailer;
+//     //Server settings
+//     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+//     $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+//     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+//     $mail->Username   = 'thedk3210@gmail.com';                     // SMTP username
+//     $mail->Password   = '7209608270a';                               // SMTP password
+//     $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+//     $mail->setFrom('official@worldwidenovel.com');
+//     $mail->addAddress($_POST['nemail']);    // Add a recipient
+//     $mail->addReplyTo('official@worldwidenovel.com');
+// 		$mail->isHTML(true);                                 // Set email format to HTML
+//     $mail->Subject = 'Welcome to World Wide Novel';
+//     $mail->Body    = '<p>Hii, <br> We are world wide novel. <br> Thanks for Subscribe Our Newsletter..</p>';
+//     $mail->addAttachment('img/mailAttach.jpeg'); 
+//   if(!$mail->send()){
     
-  }else{
+//   }else{
      
-    }
+//     }
 
 
-	}else{
-		echo 'failed';
-	}
-}
-if(isset($_SESSION['uemail'])){ $nemail = $_SESSION['uemail'];}
-else{
-	$nemail = "email@google.com";
-};
-$q="select nemail from newsletter where nemail='".$nemail."'";
-$row = mysqli_query($con,$q);
-$result= mysqli_fetch_assoc($row);
-if(mysqli_num_rows($row)>0){
-	$subscribed = "yes";
-}else{
-	$subscribed = "no";
-}
+// 	}else{
+// 		echo 'failed';
+// 	}
+// }
+// if(isset($_SESSION['uemail'])){ $nemail = $_SESSION['uemail'];}
+// else{
+// 	$nemail = "email@google.com";
+// };
+// $q="select nemail from newsletter where nemail='".$nemail."'";
+// $row = mysqli_query($con,$q);
+// $result= mysqli_fetch_assoc($row);
+// if(mysqli_num_rows($row)>0){
+// 	$subscribed = "yes";
+// }else{
+// 	$subscribed = "no";
+// }
 ?>
-
-	<script async src='//www.responserver.com/052a7ca4cc9f96ed4b5566e15089f3eb/invoke.js'></script>
-
 <!-- banner area start -->
 <div id="preloader"></div>
 
@@ -143,35 +140,6 @@ if(mysqli_num_rows($row)>0){
 
 	<!-- end of banner section -->
 
-										
-
-<script async="async" data-cfasync="false" src="//pl15871674.topprofitablegate.com/c26cdcd98aa77f9e0134916f8d69cd93/invoke.js"></script>
-
-<div id="container-c26cdcd98aa77f9e0134916f8d69cd93"></div>
-
-<div class="d-block d-md-none text-center">
-
-<script type="text/javascript">
-
-	atOptions = {
-
-		'key' : '9c817ad72ba97def45e481eabc831f69',
-
-		'format' : 'iframe',
-
-		'height' : 50,
-
-		'width' : 320,
-
-		'params' : {}
-
-	};
-
-	document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.profitabledisplaycontent.com/9c817ad72ba97def45e481eabc831f69/invoke.js"></scr' + 'ipt>');
-
-</script>
-
-</div>
 
 	<!-- start books section -->
 

@@ -7,7 +7,8 @@ define('PAGE','Addbook');
 include('../dbconnection.inc.php');
 
 include('header.php');
-
+$notification="";
+$rows = "";
 if(!isset($_SESSION['alogin'])){
 
    header('location:login.php');
@@ -54,17 +55,12 @@ if($_FILES['bimage']['error'] == 0){
 
     move_uploaded_file($tmp_name,"../media/".$img_name);
 
- 
 
 }
 
 }
-
-
 
   // end code for book image
-
-
 
    // start code for book pdf link
 
@@ -90,28 +86,59 @@ if($_FILES['pdf']['error'] == 0){
 
 }
 
-
-
   // end code for book pdf link
 
-
-
-$sql = "INSERT INTO book (cat_id, book_title, s_desc, image, book, type, original_price, selling_price, status)
+if(isset($_POST['addbook'])){
+  $sql = "INSERT INTO book (cat_id, book_title, s_desc, image, book, type, original_price, selling_price, status)
 
 VALUES ('$catname', '$btitle', '$sdesc', '$img_name', '$book_link', '$mtype', $oprice, $sprice, 1)";
 
 $row = mysqli_query($con,$sql);
 
 if($row){
-
-$msg = "<span class='alert alert-success'>Data inserted successfully...</span>";
+  $notification="yes";
+  $msg = "<span class='alert alert-success'>Data inserted successfully...</span>";
 
 }
 }else{
-
-$msg = "<span class='alert alert-danger'>Data not inserted successfully...</span>";
+  $notification="";
+  $msg = "<span class='alert alert-danger'>Data not inserted successfully...</span>";
 
 }
+}
+
+if($notification=="yes"){
+  $query="select nemail from newsletter";
+  $row=mysqli_query($con,$query);
+  if(mysqli_num_rows($row)>0){
+    require('../phpmailer/PHPMailerAutoload.php');
+    $mail = new PHPMailer;
+    //Server settings
+    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->Username   = 'thedk3210@gmail.com';                     // SMTP username
+    $mail->Password   = '7209608270a';                               // SMTP password
+    $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+    $mail->setFrom('official@worldwidenovel.com');
+    while($final=mysqli_fetch_assoc($row)){
+        // $mail->addAddress($final['nemail']);
+        $mail->addBCC($final['nemail']);    // Add a recipient
+    }
+    // $mail->addBCC($final['nemail']);
+    $mail->addReplyTo('official@worldwidenovel.com');
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Notification for new Books';
+    $mail->Body    = '<p>Hii, <br> We are world wide novel. <br> New books are available on our website. Please visit our site. <br> Thank you.. <br>website link: <a href="https://www.worldwidenovel.com/">https://www.worldwidenovel.com/</a></p>';
+    $mail->addAttachment('../media/'.$img_name);
+  if(!$mail->send()){
+    echo "fail email";
+  }else{
+     
+    }
+ }
+}
+
 
 ?>
 
