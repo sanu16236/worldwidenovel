@@ -1,251 +1,256 @@
-*{
-  margin:0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
-}
-html{
-    scroll-behavior:smooth;
-}
-body{
-  position: relative;
-}
-#preloader{
-  width:100%;
-  height:100vh;
-  position:fixed;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  background-color:#129694;
-  background-image:url('../img/loader.gif');
-  background-position:center;
-  background-repeat:no-repeat;
-  background-size:150px 150px;
-  z-index:99999;
-}
-.logo{
-  letter-spacing: 2.5px;
-  font-size: 2rem;
-}
-.active{
-  color:#5e17eb!important;
-}
-.navbar-nav li a{
-  transition: all 0.5s linear;
-}
-/* banner area start */
-.banner{
-  width: 100%;
-  height: 100vh;
-  background-image: url('../img/wwn (2).png');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.content{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  padding: 0 25px;
-}
-.banner h3{
-  letter-spacing: 2.5px;
-}
-.banner h1{
-  letter-spacing: 3px;
-  font-size: 2.5em;
-}
-.banner p{
-  letter-spacing: 2px;
-}
-/* end of banner section */
-/* card section start */
-.card{
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  background-image: url('../img/cardbgg.jpg')!important;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border:none;
-
-}
-.card img{
-  height: 220px!important;
-}
-/* start about section */
-#about{
-  background-image: url('../img/about.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.about-img{
-  overflow-x:hidden ;
-}
-.about-img img{
-  width: 500px;
-
-}
-
-/* contact us section start */
-
-#contact{
-  background:url('../img/c.jpg');
-background-position: center;
-background-size: cover;
-overflow:hidden;
-
-}
-.contact-form{
-  border-radius: 27px;
-  z-index: 9;
-}
-.social-icon{
-  display: flex;
-  justify-content: center;
-  
-}
-.main-contact{
-  margin-top: 100px;
-  background: #5e17eb;
-  border-radius: 10px;
-  height: 200px;
-  transform: rotate(-25deg);
-  z-index: 1;
-}
-.social-icon a{
- border-radius: 50%;
- height: 50px;
- width:50px;
- line-height: 50px;
- margin-left:10px;
- padding:0!important;
- padding-top: 5px!important;
- text-align: center;
-background: linear-gradient(145deg, #5e17eb, #5a73fc);
-box-shadow:  11px 11px 29px #5a73fc, 
-             -11px -11px 29px #2a05ff;
-color:black;
-transition: all 0.5s linear;
-}
-.abtn{
-  background-color: #5e17eb;
-  transition: all 0.5s ease-in;
-}
-.social-icon a:hover, .abtn:hover{
-  opacity: 0.6;
-}
-
-/* about page section */
-.about-banner{
-  width: 100%;
-  min-height: 100vh;
-  
-}
-.about-banner .breadcrumb-area{
-  height: 60vh;
-  background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('../img/aboutbanner.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-}
-/* book section  */
-.book-banner .breadcrumb-area{
-  height: 60vh;
-  background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('../img/abb.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-}
-/* profile section */
-.profile-nav{
-  padding: 10px;
-min-height: 100vh;
-
-}
-.profile-img{
-  margin-top: 80px;
-  width:120px;
-  height: 120px;
-  border-radius: 100%;
-}
-/* responsive profile navbar */
-.res-profile-text{
-  margin-top: 60px!important;
-}
-.res-profile{
-  list-style: none;
-  margin-top: 50px;
-}
-.profile_form{
-  margin-left: 190px;
-}
-/* start liberary section */
-.liberary-book{
-margin:70px 5px 5px 10px;
-}
-/* code for payment gateway */
-.tnx-page{
-  height: 100vh;
-  width: 100%;
-  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)),url('../img/checkout.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.tnx-page form{
-  border-radius: 10px;
-}
-.tnx-page form input:not(.btn1){
-  border:none;
-  background: transparent;
-  margin-left: 100px;
-  outline: none;
-  width:200px;
-}
-
-/* start media query */
-@media(max-width:768px){
-  .main-contact{
-    transform: rotate(0deg);
-  }
-  .liberary-book{
-margin:30px 5px 5px 10px;
-}
-.banner{
-    background-image:url('../img/mv.jpg');
-}
-}
-
-@media(max-width:425px){
-  .card{
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .profile-img{
-  width:70px;
-  height: 70px;
-  border-radius: 100%;
-}
-.main-contact{
-  margin-top:50px;
-}
-}
-
-@media(max-width:320px){
-  .profile-img{
-  width:60px;
-  height: 60px;
-  border-radius: 100%;
-}
-.res-profile{
-  margin-top: 30px;
-}
-}
-
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+  position: relative;
+}
+#preloader{
+  width:100%;
+  height:100vh;
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color:#129694;
+  background-image:url('../img/loader.gif');
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:500px 500px;
+  z-index:99999;
+}
+.logo{
+  letter-spacing: 2.5px;
+  font-size: 2rem;
+}
+.active{
+  color:#5e17eb!important;
+}
+.navbar-nav li a{
+  transition: all 0.5s linear;
+}
+/* banner area start */
+.banner{
+  width: 100%;
+  height: 100vh;
+  background-image: url('../img/wwn (2).png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  padding: 0 25px;
+}
+.banner h3{
+  letter-spacing: 2.5px;
+}
+.banner h1{
+  letter-spacing: 3px;
+  font-size: 2.5em;
+}
+.banner p{
+  letter-spacing: 2px;
+}
+/* end of banner section */
+/* card section start */
+.card{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-image: url('../img/cardbgg.jpg')!important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border:none;
+
+}
+.card img{
+  height: 220px!important;
+}
+/* start about section */
+#about{
+  background-image: url('../img/about.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.about-img{
+  overflow-x:hidden ;
+}
+.about-img img{
+  width: 500px;
+
+}
+
+/* contact us section start */
+
+#contact{
+  background:url('../img/c.jpg');
+background-position: center;
+background-size: cover;
+overflow:hidden;
+
+}
+.contact-form{
+  border-radius: 27px;
+  z-index: 9;
+}
+.social-icon{
+  display: flex;
+  justify-content: center;
+  
+}
+.main-contact{
+  margin-top: 100px;
+  background: #5e17eb;
+  border-radius: 10px;
+  height: 200px;
+  transform: rotate(-25deg);
+  z-index: 1;
+}
+.social-icon a{
+ border-radius: 50%;
+ height: 50px;
+ width:50px;
+ line-height: 50px;
+ margin-left:10px;
+ padding:0!important;
+ padding-top: 5px!important;
+ text-align: center;
+background: linear-gradient(145deg, #5e17eb, #5a73fc);
+box-shadow:  11px 11px 29px #5a73fc, 
+             -11px -11px 29px #2a05ff;
+color:black;
+transition: all 0.5s linear;
+}
+.abtn{
+  background-color: #5e17eb;
+  transition: all 0.5s ease-in;
+}
+.social-icon a:hover, .abtn:hover{
+  opacity: 0.6;
+}
+
+/* about page section */
+.about-banner{
+  width: 100%;
+  min-height: 100vh;
+  
+}
+.about-banner .breadcrumb-area{
+  height: 60vh;
+  background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('../img/aboutbanner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+/* book section  */
+.book-banner .breadcrumb-area{
+  height: 60vh;
+  background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('../img/abb.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+/* profile section */
+.profile-nav{
+  padding: 10px;
+min-height: 100vh;
+
+}
+.profile-img{
+  margin-top: 80px;
+  width:120px;
+  height: 120px;
+  border-radius: 100%;
+}
+/* responsive profile navbar */
+.res-profile-text{
+  margin-top: 60px!important;
+}
+.res-profile{
+  list-style: none;
+  margin-top: 50px;
+}
+.profile_form{
+  margin-left: 190px;
+}
+/* start liberary section */
+.liberary-book{
+margin:70px 5px 5px 10px;
+}
+/* code for payment gateway */
+.tnx-page{
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)),url('../img/checkout.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.tnx-page form{
+  border-radius: 10px;
+}
+.tnx-page form input:not(.btn1){
+  border:none;
+  background: transparent;
+  margin-left: 100px;
+  outline: none;
+  width:200px;
+}
+/* education section start */
+.education-banner{
+  height: 60vh;
+  background-image: url('../img/education.jpg');
+}
+
+/* start media query */
+@media(max-width:768px){
+  .main-contact{
+    transform: rotate(0deg);
+  }
+  .liberary-book{
+margin:30px 5px 5px 10px;
+}
+.banner{
+    background-image:url('../img/mv.jpg');
+}
+}
+
+@media(max-width:425px){
+  .card{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .profile-img{
+  width:70px;
+  height: 70px;
+  border-radius: 100%;
+}
+.main-contact{
+  margin-top:50px;
+}
+}
+
+@media(max-width:320px){
+  .profile-img{
+  width:60px;
+  height: 60px;
+  border-radius: 100%;
+}
+.res-profile{
+  margin-top: 30px;
+}
+}
+

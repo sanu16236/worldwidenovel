@@ -1,0 +1,14 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http://worldwidenovel.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://worldwidenovel.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.worldwidenovel.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.worldwidenovel.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://worldwidenovel.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://worldwidenovel.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.worldwidenovel.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.worldwidenovel.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.world.wide.novel.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.world.wide.novel.com$      [NC]
+RewriteRule .*\.(jpg|jpeg|gif|png|bmp)$ https://www.worldwidenovel.com [R,NC]
