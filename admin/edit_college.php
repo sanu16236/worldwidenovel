@@ -18,9 +18,11 @@ if(isset($_POST['edit_college'])){
   $name = $_POST['name'];
   $link = $_POST['link'];
   $dep_name = $_POST['dname'];
-
-
-  $sql = "update admission set college_name='$name', college_link='$link', department='$dep_name', status=1 where id='$id'";
+  $brocier_name = rand(111111,999999).'_'.$_FILES['pdf']['name'];
+  $tmp_name = $_FILES['pdf']['tmp_name'];
+  move_uploaded_file($tmp_name,'../pdf/'.$brocier_name);
+  unlink('../pdf/'.$result['pdf']);
+  $sql = "update admission set college_name='$name', college_link='$link', department='$dep_name', pdf='$brocier_name', status=1 where id='$id'";
   $res = mysqli_query($con,$sql);
   if($res){
     $msg = '<span class="alert alert-success">Data updated successfully..</span>';
@@ -34,7 +36,7 @@ if(isset($_POST['edit_college'])){
 ?>
 <div class="container mt-3">
 <h2 class="text-dark">Update College</h2>
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
 <input type="hidden" name="id" value="<?php if(isset($result)){echo $result['id'];} ?>" class="form-control">
 <div class="form-group">
 <label for="name">Department Name</label>
@@ -56,7 +58,13 @@ if(isset($_POST['edit_college'])){
 <label for="link">College Link</label>
 <input type="text" required value="<?php if(isset($result)){echo $result['college_link'];} ?>" name="link" id="link" placeholder="College Link" class="form-control">
 </div>
+<div class="form-group">
 
+<label for="pdf">College Brocier</label>
+
+<input type="file" accept="application/*" required value="" name="pdf" id="pdf" placeholder="College Brocier" class="form-control p-1">
+
+</div>
 <div class="form-group">
 <input type="submit" name="edit_college" value="Update College" class="btn btn-success">
 <a href="admission.php" class="btn btn-secondary">Close</a>

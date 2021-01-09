@@ -26,12 +26,13 @@ while($result = mysqli_fetch_assoc($row)){?>
      <h3 class="text-capitalize"><?php echo $result['name']; ?></h3>
      </div>
      <ul class="list-group list-group-flush">
-  <?php $crow = mysqli_query($con,"select college_name, college_link from admission where status = 1 and department = '".$result['id']."'");
+  <?php $crow = mysqli_query($con,"select college_name, college_link,pdf from admission where status = 1 and department = '".$result['id']."'");
   if(mysqli_num_rows($crow) > 0){
   while($cresult = mysqli_fetch_assoc($crow)){?>
-    <a target="_blank" href="<?php echo $cresult['college_link']; ?>"><li class="list-group-item text-capitalize"><i class="fas text-success fa-hand-point-right"></i>&nbsp;&nbsp;<?php echo $cresult['college_name']; ?></li></a>
+    <li class="list-group-item text-capitalize"><a target="_blank" href="<?php echo $cresult['college_link']; ?>"><i class="fas text-success fa-hand-point-right"></i>&nbsp;&nbsp;<?php echo $cresult['college_name']; ?></a><br>
+    <a href="<?php echo './pdf/'.$cresult['pdf']; ?>" class="text-danger"><u>See more</u></a></li>
    <?php } }else{ echo "<p class='p-2'>No list are Available</p>";} ?>
-  </ul>
+  </ul> 
  </div>
 </div>
 <?php } ?>

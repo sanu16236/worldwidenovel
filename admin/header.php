@@ -52,7 +52,7 @@ if(PAGE != 'adminlogin'){
       <a href="user.php" class="nav-link <?php if(PAGE == 'User'){echo 'active';} ?>">User</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle <?php if(PAGE == 'adddepartment' || PAGE == 'department' || PAGE == 'addcolleges' || PAGE == 'colleges'){echo 'active';} ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">

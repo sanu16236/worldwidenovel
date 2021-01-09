@@ -14,19 +14,16 @@ if(!isset($_SESSION['alogin'])){
    header('location:login.php');
 
  }
-
 if(isset($_POST['add_colleges'])){
-
   $name = $_POST['name'];
-
   $link = $_POST['link'];
-
+  $brocier_name = rand(111111,999999).'_'.$_FILES['pdf']['name'];
+  $tmp_name = $_FILES['pdf']['tmp_name'];
   $dep_name = $_POST['dname'];
-  $sql = "INSERT INTO admission (college_name, college_link, department, status)
-
-  VALUES ('$name', '$link', '$dep_name', 1)";
-  
+  $sql = "INSERT INTO admission(college_name, college_link, department, pdf, status)
+  VALUES('$name', '$link', '$dep_name', '$brocier_name', 1)";
   $row = mysqli_query($con,$sql);
+  move_uploaded_file($tmp_name,'../pdf/'.$brocier_name);
   if($row){
   $msg = "<span class='alert alert-success'>Data inserted successfully...</span>";
        
@@ -44,7 +41,7 @@ if(isset($_POST['add_colleges'])){
 
 <h2 class="text-dark">Add College</h2>
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
 
 <div class="form-group">
 
@@ -83,8 +80,13 @@ if(isset($_POST['add_colleges'])){
 <input type="text" required value="" name="link" id="link" placeholder="College Link" class="form-control">
 
 </div>
+<div class="form-group">
 
+<label for="pdf">College Brocier</label>
 
+<input type="file" accept="application/*" required value="" name="pdf" id="pdf" placeholder="College Brocier" class="form-control p-1">
+
+</div>
 
 <div class="form-group">
 
