@@ -21,7 +21,7 @@
 <?php $row = mysqli_query($con,"select * from department where status = 1");
 while($result = mysqli_fetch_assoc($row)){?>
     <div class="col-12 mb-2 my-2 col-sm-12 col-md-6 col-lg-4 col-xl-3">
-     <div class="card shadow-sm" style="width: 100%">
+     <div class="card shadow-sm" style="width: 100%;">
      <div class="card-header">
      <h3 class="text-capitalize"><?php echo $result['name']; ?></h3>
      </div>
@@ -30,7 +30,7 @@ while($result = mysqli_fetch_assoc($row)){?>
   if(mysqli_num_rows($crow) > 0){
   while($cresult = mysqli_fetch_assoc($crow)){?>
     <li class="list-group-item text-capitalize"><a target="_blank" href="<?php echo $cresult['college_link']; ?>"><i class="fas text-success fa-hand-point-right"></i>&nbsp;&nbsp;<?php echo $cresult['college_name']; ?></a><br>
-    <a href="<?php echo './pdf/'.$cresult['pdf']; ?>" class="text-danger"><u>See more</u></a></li>
+    <?php if($cresult['pdf'] != null){ ?><a href="<?php echo './pdf/'.$cresult['pdf']; ?>" class="text-danger"><u>See more</u></a><?php } ?></li>
    <?php } }else{ echo "<p class='p-2'>No list are Available</p>";} ?>
   </ul> 
  </div>

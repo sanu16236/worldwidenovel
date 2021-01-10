@@ -8,8 +8,8 @@ if(!isset($_SESSION['alogin'])){
  }
 if(isset($_GET['type']) && $_GET['type'] == 'edit'){
   $usql = "select * from admission where id='".$_GET['id']."'";
-$urow = mysqli_query($con,$usql);
-$result = mysqli_fetch_assoc($urow);
+  $urow = mysqli_query($con,$usql);
+  $result = mysqli_fetch_assoc($urow);
 }
 
 // code for update book
@@ -18,10 +18,13 @@ if(isset($_POST['edit_college'])){
   $name = $_POST['name'];
   $link = $_POST['link'];
   $dep_name = $_POST['dname'];
-  $brocier_name = rand(111111,999999).'_'.$_FILES['pdf']['name'];
-  $tmp_name = $_FILES['pdf']['tmp_name'];
-  move_uploaded_file($tmp_name,'../pdf/'.$brocier_name);
-  unlink('../pdf/'.$result['pdf']);
+  $brocier_name = $result['pdf'];
+  if($_FILES['pdf']['error'] == 0){
+    $brocier_name = rand(111111,999999).'_'.$_FILES['pdf']['name'];
+    $tmp_name = $_FILES['pdf']['tmp_name'];
+    move_uploaded_file($tmp_name,'../pdf/'.$brocier_name);
+    unlink('../pdf/'.$result['pdf']);
+  }
   $sql = "update admission set college_name='$name', college_link='$link', department='$dep_name', pdf='$brocier_name', status=1 where id='$id'";
   $res = mysqli_query($con,$sql);
   if($res){
@@ -62,7 +65,7 @@ if(isset($_POST['edit_college'])){
 
 <label for="pdf">College Brocier</label>
 
-<input type="file" accept="application/*" required value="" name="pdf" id="pdf" placeholder="College Brocier" class="form-control p-1">
+<input type="file" accept="application/*" value="" name="pdf" id="pdf" placeholder="College Brocier" class="form-control p-1">
 
 </div>
 <div class="form-group">
