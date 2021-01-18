@@ -210,11 +210,12 @@ margin:70px 5px 5px 10px;
   width:200px;
 }
 /* education section start */
-.education-banner{
-  height: 60vh;
-  background-image: url('../img/education.jpg');
-}
 
+.education-banner .carousel .carousel-item img{
+height: 400px;
+width: 100%;
+/* object-fit: contain; */
+}
 /* start media query */
 @media(max-width:768px){
   .main-contact{
@@ -226,6 +227,10 @@ margin:30px 5px 5px 10px;
 .banner{
     background-image:url('../img/mv.jpg');
 }
+.education-banner .carousel .carousel-item img{
+  height: 300px;
+  
+  }
 }
 
 @media(max-width:425px){

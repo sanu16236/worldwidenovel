@@ -1,18 +1,24 @@
 <?php 
-define('TITLE','Profile');
-define('PAGE','Profile');
+define('TITLE','Product');
+define('PAGE','product');
 include('dbconnection.inc.php');
 include('header.php');
-if(!isset($_SESSION['ulogin'])){
-header('location:warning.php');
-}
 // query for user details
 $email = $_SESSION['uemail'];
-$sql = "select bs.stu_email, bs.course_id, bk.book_title, bk.s_desc, bk.image, bk.book, bk.original_price, bk.selling_price from book_sell as bs join book as bk on bs.course_id = bk.bid where bs.stu_email= '$email' and bs.status= 'TXN_SUCCESS' order by id desc";
+$sql = "select s.id, s.name, s.description, s.price, s.image, s.whatsapp from sell as s join user as u on s.user_id = u.uid order by id desc";
 $row = mysqli_query($con,$sql);
 $usql = "select name, image from user where email='$email'";
 $res = mysqli_query($con,$usql);
 $uname = mysqli_fetch_assoc($res);
+if(isset($_GET['type']) && $_GET['type'] == 'delete'){
+     $id = $_GET['id'];
+     $row = mysqli_query($con,"delete from sell where id='$id'");
+     if($row){
+          $msg = "<div class='alert alert-success m-2' style='height:50px'>Product Deleted</div>";
+     }else{
+          $msg = "<div class='alert alert-danger m-2' style='height:50px'>Product not deleted</div>";
+     }
+}
 ?>
 <!-- code for medium device -->
 <section class="d-block d-md-none">
@@ -31,7 +37,7 @@ $uname = mysqli_fetch_assoc($res);
 				<nav class="">
 					<ul class="d-flex res-profile">
 						<li class="nav-item">
-							<a href="profile.php" class="
+							<a href="" class="
 								<?php if(PAGE == 'Profile'){echo 'active';} ?>text-light p-2 nav-link">Library
 							</a>
 						</li>
@@ -39,7 +45,7 @@ $uname = mysqli_fetch_assoc($res);
 							<a href="edit_profile.php" class="text-light p-2 nav-link">Profile</a>
 						</li>
 						<li class="nav-item">
-							<a href="product.php" class="text-light p-2 nav-link">My Product</a>
+							<a href="product.php" class="<?php if(PAGE == 'product'){echo 'active';} ?>text-light p-2 nav-link">My Product</a>
 						</li>
 						<li class="nav-item">
 							<a href="logout.php" class="btn btn-danger mr-3">Logout</a>
@@ -63,7 +69,7 @@ $uname = mysqli_fetch_assoc($res);
 							<div class="dropdown-divider"></div>
 							<ul class="navbar-nav">
 								<li class="nav-item">
-									<a href="" class="
+									<a href="profile.php" class="
 										<?php if(PAGE == 'Profile'){echo 'active';} ?>text-light nav-link">
 										<i class="fas fa-book-open"></i>&nbsp;&nbsp;Library
 									</a>
@@ -74,45 +80,35 @@ $uname = mysqli_fetch_assoc($res);
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="product.php" class="text-light nav-link">
+									<a href="product.php" class="<?php if(PAGE == 'product'){echo 'active';} ?>text-light nav-link">
 										<i class="fas fa-tag"></i>&nbsp;&nbsp;My Product
 									</a>
 								</li>
 							</ul>
-						</div>
+						</div>  
 					</div>
+					<?php 
+					if(isset($msg)){
+					echo $msg;
+					echo '<script>window.location.href="product.php	"</script>';
+					die();} ?>
+                         <?php if(mysqli_num_rows($row) > 0){
+               while($result = mysqli_fetch_assoc($row)){ ?>
+               <div class="col-12 col-md-5 col-lg-3 my-2"> 
+               
+              
+               <div class="shopping-card shadow p-2 w-100">
+                    <div>
+                         <img src="media/<?php echo $result['image']; ?>" class="img-fluid" style="height:250px; width:100%;">
+                    </div>
+                    <h3 class="text-uppercase my-1"><i class="far fa-hand-point-right"></i>&nbsp;<?php echo $result['name']; ?></h3>
+                    <p class="text-capitalize m-0"><?php echo $result['description']; ?></p>
+                    <h5 class="text-secondary">Rs. <?php echo $result['price']; ?></h5>
+                    <div class="text-center my-2"><a href="product.php?type=delete&id=<?php echo $result['id'] ?>" class="btn btn-outline-danger">Delete Product</a></div>
+               </div>
+               </div>
+               <?php }}else{ echo '<div class="m-2 alert alert-danger" style="height:50px">No Products are Available..</div>';} ?>
+                         
+               </div>
 					<!-- code for select all book for liberary -->
-					<div class="col-md-10">
-						<div class="row mr-0 mb-2 mt-2">
-							<?php if(mysqli_num_rows($row)>0){
-  while($result = mysqli_fetch_assoc($row)){
-  ?>
-							<div class="col-lg-3 col-md-4 col-sm-6">
-								<div class="card shadow mt-3 mx-4 px-2 mx-md-0 px-md-1 pt-2">
-									<img src="<?php echo "./media/".$result['image']; ?>" class="card-img-top" alt="...">
-										<div class="card-body p-2">
-											<h6> <span class="text-dark font-weight-bold">Price: &nbsp;</span>
-												<del class="text-muted">
-													<?php echo 'Rs '.$result['original_price'].'.00'; ?>
-												</del> &nbsp;
-												<?php echo 'Rs '.$result['selling_price'].'.00'; ?>
-											</h6>
-											<h5 class="card-title font-weight-bold">
-												<?php echo $result['book_title']; ?>
-											</h5>
-											<p class="card-text">
-												<?php echo $result['s_desc'].'.'; ?>
-											</p>
-											<a href="<?php echo "./pdf/".$result['book']; ?>" target="_blank" class="btn btn-success">Read PDF
-											</a>
-										</div>
-									</div>
-								</div>
-								<?php } }else{?>
-                  <h5 class=" mx-md-auto ml-5 text-danger font-weight-bold"> No books are available in your library..</h5>
-
-								<?php }?>
-							</div>
-						</div>
-					</div>
-					<?php  include('footer.php'); ?>
+<?php  include('footer.php'); ?>

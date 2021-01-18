@@ -6,8 +6,10 @@ include('header.php');
 
 if(!isset($_SESSION['ulogin'])){
 echo "<script>";
-echo "window.location.href='warning.html'";
+$_SESSION['errmsg']=true;
+echo "window.location.href='index.php'";
 echo"</script>";
+die();
 } ?>
 <!--ad section start-->
 <script type='text/javascript' src='//pl15884251.topprofitablegate.com/05/9a/28/059a2845970c246aa4d2cc671303737b.js'></script>

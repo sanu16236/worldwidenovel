@@ -1,7 +1,11 @@
 <?php
 session_start();
 include('dbconnection.inc.php'); 
-
+if(isset($_SESSION['errmsg'])){
+	unset($_SESSION['errmsg']);
+	echo '<script> alert("for see more sign in first"); </script>';
+		
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,9 +127,20 @@ if(isset($_SESSION['ulogin'])){ ?>
 <a class="nav-link text-light  <?php if(PAGE == 'education'){echo 'active';} ?>" href="education.php">
 Admission
 </a>
-
 </li>
-						<!-- <li class="nav-item"><a href="" class="nav-link">Home</a></li> -->
+<!-- shopping dropdown -->
+
+<li class="nav-item dropdown">
+        <a class="nav-link text-light dropdown-toggle <?php if(PAGE == 'sell' || PAGE == 'buy'){echo 'active';} ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Shopping
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="sell.php">For sell</a>
+          <a class="dropdown-item" href="buy.php">Buy now</a>
+        </div>
+      </li>
+
+<!-- end shopping dropdown -->
 	<li class="nav-item px-lg-2">
 		<a href="about.php" class="
 			<?php if(PAGE == 'About'){echo 'active';} ?> text-light nav-link">About Us

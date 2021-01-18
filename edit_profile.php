@@ -92,6 +92,11 @@ if(isset($_POST['update'])){
 				</a>
 			</li>
 			<li class="nav-item">
+				<a href="product.php" class="
+					<?php if(PAGE == 'product'){echo 'active';} ?>text-light p-2 nav-link">My Product
+				</a>
+			</li>
+			<li class="nav-item">
 				<a href="logout.php" class="btn btn-danger mr-3">Logout</a>
 			</li>
 		</ul>
@@ -125,6 +130,11 @@ if(isset($_POST['update'])){
 								<li class="nav-item">
 									<a href="edit_profile.php" class="<?php if(PAGE == 'Edit'){echo 'active';} ?>text-light nav-link">
 										<i class="fas fa-user"></i>&nbsp;&nbsp;Profile
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="product.php" class="<?php if(PAGE == 'product'){echo 'active';} ?>text-light nav-link">
+										<i class="fas fa-tag"></i>&nbsp;&nbsp;My Product
 									</a>
 								</li>
 							</ul>

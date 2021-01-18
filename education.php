@@ -6,8 +6,20 @@
      include('header.php');
 ?>
 <!-- banner section -->
-<div class="container-fluid education-banner">
-
+<div class="education-banner">
+<div id="carouselExampleSlidesOnly" data-interval="5000" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="img/ed3.png" style="object-fit:contain" class="d-block" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/ed1.jpeg" class="d-block" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/ed2.jpeg" class="d-block" alt="...">
+    </div>
+  </div>
+</div>
 </div>
 <div class="row m-0 my-3">
      <h3 class="mx-auto">Admission & Colleges</h3>
