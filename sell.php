@@ -19,11 +19,12 @@ if(isset($_POST['add_product'])){
   $desc = $_POST['desc'];
   $price = $_POST['price'];
   $whatsapp = $_POST['mobile'];
+  $cat = $_POST['product_cat'];
   $final_image = rand(11111111,99999999).'_'.$_FILES['image']['name'];
   $tmp_name = $_FILES['image']['tmp_name'];
   move_uploaded_file($tmp_name,"media/".$final_image);
 
-  $psql = "insert into sell(user_id, name, description, price, image, whatsapp, status) values('$id', '$name', '$desc', '$price', '$final_image','$whatsapp', 1)";
+  $psql = "insert into sell(user_id, name, description, price, image, whatsapp,category, status) values('$id', '$name', '$desc', '$price', '$final_image','$whatsapp', '$cat', 1)";
   $pq = mysqli_query($con,$psql);
   if($pq){
     $msg = "<div class='mx-2 alert alert-success'>Product added successfully</div>";
@@ -41,6 +42,7 @@ if(isset($msg)){
  echo $msg; 
 }
 ?>
+<p class="p-3 text-danger text-capitalize">Note: Enter your product details for sell your product..</p>
 <div class="container-fluid">
      <div class="container">
           <div class="row">
@@ -48,6 +50,18 @@ if(isset($msg)){
                <form method="post" enctype="multipart/form-data">
   <div class="form-group">
     <input type="hidden" class="form-control" name="id" value="<?php echo $result['uid'] ?>">
+  </div>
+  <div class="form-group">
+    <label for="category">Product Category</label>
+    <select required name="product_cat" class="form-control">
+    <option>Select Category</option>
+    <?php
+    $prow = mysqli_query($con,"select * from product_cat where status = 1");
+    while($presult = mysqli_fetch_assoc($prow)){ ?>
+      <option value="<?php echo $presult['id']; ?>"><?php echo $presult['name']; ?></option>
+    <?php }
+    ?>
+    </select>
   </div>
   <div class="form-group">
     <label for="name">Product Name</label>

@@ -53,12 +53,15 @@ if(PAGE != 'adminlogin'){
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle <?php if(PAGE == 'adddepartment' || PAGE == 'department' || PAGE == 'addcolleges' || PAGE == 'colleges'){echo 'active';} ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          Admission
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="department.php">Department</a>
           <a class="dropdown-item" href="admission.php">Colleges</a>
         </div>
+      </li>
+      <li class="nav-item">
+      <a href="product_cat.php" class="nav-link <?php if(PAGE == 'product'|| PAGE == 'edit_product' || PAGE == 'add_product'){echo 'active';} ?>">Product Category</a>
       </li>
       </ul> 
     </div>

@@ -216,6 +216,14 @@ height: 400px;
 width: 100%;
 /* object-fit: contain; */
 }
+/* buy page section */
+.buy-banner{
+  height: 50vh;
+  background-image: url('../img/buy2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 /* start media query */
 @media(max-width:768px){
   .main-contact{
