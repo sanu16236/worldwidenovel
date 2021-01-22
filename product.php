@@ -5,7 +5,9 @@ include('dbconnection.inc.php');
 include('header.php');
 // query for user details
 $email = $_SESSION['uemail'];
-$sql = "select s.id, s.name, s.description, s.price, s.image, s.whatsapp from sell as s join user as u on s.user_id = u.uid order by id desc";
+$uq = mysqli_query($con,"select uid from user where email='$email'");
+$ur = mysqli_fetch_assoc($uq);
+$sql = "select s.id, s.name, s.description, s.price, s.image, s.whatsapp from sell as s join user as u on s.user_id = u.uid where s.user_id = '".$ur['uid']."'";
 $row = mysqli_query($con,$sql);
 $usql = "select name, image from user where email='$email'";
 $res = mysqli_query($con,$usql);

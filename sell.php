@@ -3,13 +3,13 @@ define('TITLE','Shop');
 define('PAGE','sell');
 include 'dbconnection.inc.php';
 include 'header.php';
-// if(!isset($_SESSION['ulogin'])){
-//      echo "<script>";
-//      $_SESSION['errmsg']=true;
-//      echo "window.location.href='index.php'";
-//      echo"</script>";
-//      die();
-// }
+if(!isset($_SESSION['ulogin'])){
+     echo "<script>";
+     $_SESSION['errmsg']=true;
+     echo "window.location.href='index.php'";
+     echo"</script>";
+     die();
+}
 $row = mysqli_query($con,"select uid from user where email = '".$_SESSION['uemail']."'");
 $result = mysqli_fetch_assoc($row);
 if(isset($_POST['add_product'])){
@@ -84,8 +84,10 @@ if(isset($msg)){
     <input type="file" accept="image/*" class="form-control-file" name="image" required id="image">
   </div>
   <input type="submit" value="Add Product" name="add_product" class="btn btn-primary">
+  <a href="index.php" class="btn btn-danger">Close</a>  
 </form>
-               </div>
+            
+     </div>
           </div>
      </div>
 
