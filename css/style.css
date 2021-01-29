@@ -224,6 +224,17 @@ width: 100%;
   background-position: center;
   background-repeat: no-repeat;
 }
+/* bscc section */
+.main-bscc h4{
+  line-height: 3px;
+}
+.main-bscc span{
+ display:inline-block;
+ width: 200px;
+ height: 2px;
+ background-color: #fbff05;
+ margin-left: 50px;
+}
 /* start media query */
 @media(max-width:768px){
   .main-contact{
